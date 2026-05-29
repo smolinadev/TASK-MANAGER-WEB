@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Task Manager</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="app">
+
+    <!-- ENCABEZADO -->
+    <div class="header">
+      <div>
+        <h1 class="title">Mis Tareas</h1>
+        <p class="subtitle" id="date-label"></p>
+      </div>
+    </div>
+
+    <!-- ESTADÍSTICAS -->
+    <div class="stats-row">
+      <div class="stat-card">
+        <div class="stat-label">Total</div>
+        <div class="stat-num" id="stat-total">0</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Pendientes</div>
+        <div class="stat-num" id="stat-pending">0</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Completadas</div>
+        <div class="stat-num" id="stat-done">0</div>
+      </div>
+    </div>
+
+    <!-- FORMULARIO PARA AGREGAR TAREA -->
+    <div class="add-form">
+      <input
+        type="text"
+        id="task-input"
+        placeholder="Nueva tarea..."
+      />
+      <select id="priority-select">
+        <option value="media">Media</option>
+        <option value="alta">Alta</option>
+        <option value="baja">Baja</option>
+      </select>
+      <button id="add-btn">+ Agregar</button>
+    </div>
+
+    <!-- FILTROS -->
+    <div class="filters">
+      <button class="filter-btn active" data-filter="todas">Todas</button>
+      <button class="filter-btn" data-filter="pendientes">Pendientes</button>
+      <button class="filter-btn" data-filter="completadas">Completadas</button>
+    </div>
+
+    <!-- LISTA DE TAREAS -->
+    <div class="task-list" id="task-list"></div>
+
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
