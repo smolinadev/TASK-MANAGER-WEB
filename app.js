@@ -33,6 +33,12 @@ function showDate() {
 // y vuelve a dibujar toda la lista en pantalla.
 function render() {
   // 1. Filtrar según el botón activo
+  tasks.sort(function(a,b){
+    const peso= {alta: 1 , media: 2 , baja: 3}
+    return peso[a.priority]- peso[b.priority];
+  });
+
+
   const visible = tasks.filter(function(task) {
     if (currentFilter === "pendientes")  return !task.done;
     if (currentFilter === "completadas") return task.done;
