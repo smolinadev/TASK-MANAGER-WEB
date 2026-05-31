@@ -46,6 +46,7 @@
         <option value="alta">Alta</option>
         <option value="baja">Baja</option>
       </select>
+      <input type="date" id="date-input" />
       <button id="add-btn">+ Agregar</button>
     </div>
 
@@ -60,7 +61,12 @@
     <div class="task-list" id="task-list"></div>
 
   </div>
-
+<div id="modal-overlay">
+  <div id="modal-box">
+    <p id="modal-msg">Mensaje aquí</p>
+    <button id="modal-ok">Entendido</button>
+  </div>
+</div>
   <script src="app.js"></script>
 </body>
 </html>

@@ -23,8 +23,23 @@ function showDate() {
   const label = `${d.getDate()} ${months[d.getMonth()]} ${d.getFullYear()}`;
   document.getElementById("date-label").textContent = label;
 }
+function formatDate(dateString) {
+  const months = ["ene","feb","mar","abr","may","jun","jul","ago","sep","oct","nov","dic"];
+  const parts = dateString.split("-");
+  const day   = parts[2];
+  const month = months[parseInt(parts[1]) - 1];
+  const year  = parts[0];
+  return `${day} ${month} ${year}`;
+}
+function mostrarModal(mensaje) {
+  document.getElementById("modal-msg").textContent = mensaje;
+  document.getElementById("modal-overlay").classList.add("visible");
+}
 
-
+function cerrarModal() {
+  document.getElementById("modal-overlay").classList.remove("visible");
+}
+document.getElementById("modal-ok").addEventListener("click", cerrarModal);
 // ===========================
 // RENDERIZAR TAREAS
 // ===========================
@@ -76,7 +91,8 @@ function render() {
           ${checkIcon}
         </div>
         <div class="task-info">
-          <span class="task-name">${task.name}</span>
+        <span class="task-name">${task.name}</span>
+        ${task.deadline ? `<span class="task-date">Vence: ${formatDate(task.deadline)}</span>` : ''}
         </div>
         <span class="priority-badge p-${task.priority}">${priorityText}</span>
         <button class="delete-btn" data-id="${task.id}">✕</button>
@@ -100,15 +116,27 @@ function addTask() {
 
   // No hacer nada si el input está vacío
   if (!name) return;
+const inputFecha = document.getElementById("date-input");
+const elegida = new Date(inputFecha.value + "T00:00:00");
+const hoyLimpio = new Date();
+hoyLimpio.setHours(0,0,0,0);
+if (elegida < hoyLimpio || elegida > maxFecha) {
+    mostrarModal("Recuerda usar una fecha desde hoy hasta los próximos 45 días.");
+  inputFecha.value = toInputDate(hoy);
+  return;
+}
+  
 
   // Leer prioridad seleccionada
   const priority = document.getElementById("priority-select").value;
+  const fechaElegida = document.getElementById("date-input").value;
 
   // Crear la nueva tarea y agregarla al inicio del array
   const newTask = {
     id:       nextId++,
     name:     name,
     priority: priority,
+    deadline: fechaElegida,
     done:     false
   };
 
@@ -235,5 +263,19 @@ filterBtns.forEach(function(btn) {
   });
 });
 
+const hoy = new Date();
+const maxFecha = new Date();
+maxFecha.setDate(hoy.getDate() + 45);
+
+function toInputDate(date) {
+  return date.toISOString().split("T")[0];
+}
+
+document.getElementById("date-input").min = toInputDate(hoy);
+document.getElementById("date-input").max = toInputDate(maxFecha);
+document.getElementById("date-input").value = toInputDate(hoy);
+
+// Primer render para mostrar las tareas iniciales
+render();
 // Primer render para mostrar las tareas iniciales
 render();
