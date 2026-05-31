@@ -320,3 +320,25 @@ body {
 #modal-ok:hover {
   opacity: 0.8;
 }
+@media (max-width: 600px) {
+  .add-form {
+    flex-wrap: wrap;
+  }
+
+  .add-form input[type="text"] {
+    width: 100%;
+    flex: none;
+  }
+
+  #add-btn {
+    width: 100%;
+  }
+}
+.fecha-hoy {
+  color: #A32D2D;
+  font-weight: 500;
+}
+
+.fecha-manana {
+  color: #854F0B;
+}

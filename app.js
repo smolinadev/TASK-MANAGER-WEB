@@ -39,6 +39,17 @@ function mostrarModal(mensaje) {
 function cerrarModal() {
   document.getElementById("modal-overlay").classList.remove("visible");
 }
+function clasesFecha(dateString) {
+  const hoy = new Date();
+  hoy.setHours(0, 0, 0, 0);
+  const manana = new Date(hoy);
+  manana.setDate(hoy.getDate() + 1);
+  const fecha = new Date(dateString + "T00:00:00");
+
+  if (fecha.getTime() === hoy.getTime())    return "task-date fecha-hoy";
+  if (fecha.getTime() === manana.getTime()) return "task-date fecha-manana";
+  return "task-date";
+}
 document.getElementById("modal-ok").addEventListener("click", cerrarModal);
 // ===========================
 // RENDERIZAR TAREAS
@@ -92,7 +103,7 @@ function render() {
         </div>
         <div class="task-info">
         <span class="task-name">${task.name}</span>
-        ${task.deadline ? `<span class="task-date">Vence: ${formatDate(task.deadline)}</span>` : ''}
+        ${task.deadline ? `<span class="${clasesFecha(task.deadline)}">Vence: ${formatDate(task.deadline)}</span>` : ''}
         </div>
         <span class="priority-badge p-${task.priority}">${priorityText}</span>
         <button class="delete-btn" data-id="${task.id}">✕</button>
