@@ -58,11 +58,17 @@ document.getElementById("modal-ok").addEventListener("click", cerrarModal);
 // Esta función lee el array `tasks`, aplica el filtro activo
 // y vuelve a dibujar toda la lista en pantalla.
 function render() {
-  // 1. Filtrar según el botón activo
-  tasks.sort(function(a,b){
-    const peso= {alta: 1 , media: 2 , baja: 3}
-    return peso[a.priority]- peso[b.priority];
-  });
+
+  tasks.sort(function(a, b) {
+  const peso = { alta: 1, media: 2, baja: 3 };
+  const pDiff = peso[a.priority] - peso[b.priority];
+  if (pDiff !== 0) return pDiff;
+
+  // misma prioridad → la que vence antes va primero
+  if (!a.deadline) return 1;  // sin fecha va al final
+  if (!b.deadline) return -1;
+  return new Date(a.deadline) - new Date(b.deadline);
+});
 
 
   const visible = tasks.filter(function(task) {
