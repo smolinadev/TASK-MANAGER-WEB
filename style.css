@@ -401,3 +401,76 @@ body {
   }
 
 }
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: #1a1a1a;
+    color: #f4f4f0;
+  }
+
+  .stat-card, .task-card, .add-form input[type="text"],
+  .add-form select, #date-input, #modal-box {
+    background: #2a2a2a;
+    border-color: #3a3a3a;
+    color: #f4f4f0;
+  }
+
+  .stat-label, .subtitle {
+    color: #aaa;
+  }
+
+  .stats-row {
+    background: #1a1a1a;
+    border-color: #3a3a3a;
+  }
+
+  #add-btn {
+    background: #f4f4f0;
+    color: #1a1a1a;
+  }
+
+  .filter-btn {
+    border-color: #3a3a3a;
+    color: #aaa;
+  }
+
+  .filter-btn.active {
+    background: #f4f4f0;
+    color: #1a1a1a;
+  }
+
+  #clear-btn {
+    border-color: #3a3a3a;
+  }
+}
+@media (prefers-color-scheme: dark) {
+  /* lo que ya tienes... */
+
+  .title {
+    color: #f4f4f0;
+  }
+
+  .task-name {
+    color: #f4f4f0;
+  }
+
+  .stat-num {
+    color: #f4f4f0;
+  }
+
+  .task-card.done .task-name {
+    color: #666;
+  }
+
+  .empty {
+    color: #666;
+  }
+  .checkbox.checked {
+  background: #f4f4f0;
+  border-color: #f4f4f0;
+}
+
+.checkmark {
+  color: #1a1a1a;
+}
+  
+}
