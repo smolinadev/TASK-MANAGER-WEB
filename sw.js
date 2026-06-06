@@ -5,8 +5,8 @@ const ARCHIVOS = [
   './index.html',
   './style.css',
   './app.js',
-  './img/logo-192px.png',
-  './img/logo-512px.png'
+  'img/logo-android-192px.png',
+  'img/logo-512px.png'
 ];
 
 // Instalar — guarda los archivos en caché
