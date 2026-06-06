@@ -359,3 +359,6 @@ body {
     transform: translateY(0);
   }
 }
+body {
+  animation: fadeSlideDown 0.6s ease forwards;
+}
