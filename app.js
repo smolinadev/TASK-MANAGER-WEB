@@ -205,7 +205,14 @@ function deleteTask(id) {
 
   render();
 }
-
+//============================
+//funcion borrar completadas 
+//============================
+function clearCompleted() {
+  tasks = tasks.filter(function(t) { return !t.done; });
+  save();
+  render();
+}
 
 // ===========================
 // FILTRAR TAREAS
@@ -291,6 +298,7 @@ function toInputDate(date) {
 document.getElementById("date-input").min = toInputDate(hoy);
 document.getElementById("date-input").max = toInputDate(maxFecha);
 document.getElementById("date-input").value = toInputDate(hoy);
+document.getElementById("clear-btn").addEventListener("click", clearCompleted);
 
 // Primer render para mostrar las tareas iniciales
 render();

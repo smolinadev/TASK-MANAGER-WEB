@@ -362,3 +362,33 @@ body {
 body {
   animation: fadeSlideDown 0.6s ease forwards;
 }
+#clear-btn {
+  background: transparent;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  padding: 5px 16px;
+  font-size: 13px;
+  cursor: pointer;
+  color: #A32D2D;
+  margin-left: auto;
+  transition: all 0.15s;
+}
+
+#clear-btn:hover {
+  background: #FCEBEB;
+  border-color: #A32D2D;
+}
+
+@media (max-width: 600px) {
+  .filters {
+    flex-wrap: wrap;
+  }
+
+  #clear-btn {
+    width: 100%;
+    margin-left: 0;
+    margin-top: 8px;
+    text-align: center;
+  }
+
+}
