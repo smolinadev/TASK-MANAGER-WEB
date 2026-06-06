@@ -52,6 +52,12 @@ body {
   grid-template-columns: repeat(3, 1fr);
   gap: 10px;
   margin-bottom: 1.5rem;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: #f4f4f0;
+  padding: 10px 0;
+  border-bottom: 1px solid #e8e8e4;
 }
 
 .stat-card {
